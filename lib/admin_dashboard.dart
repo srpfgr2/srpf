@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'main.dart'; // for AuthGate
+import 'branch_summary_screen.dart';
 
 class AdminDashboard extends StatelessWidget {
   const AdminDashboard({super.key});
@@ -27,7 +28,26 @@ class AdminDashboard extends StatelessWidget {
           ),
         ],
       ),
-      body: const Center(child: Text('Welcome Admin')),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text('Welcome Admin'),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const BranchSummaryScreen(),
+                  ),
+                );
+              },
+              child: const Text('View Employees by Branch'),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
