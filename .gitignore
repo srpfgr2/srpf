@@ -1,0 +1,35 @@
+# Flutter/Dart/Pub related
+.dart_tool/
+.packages
+.pub-cache/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+.melody/
+.idea/
+.svn/
+*.iml
+
+# VS Code settings
+.vscode/
+
+# iOS and Android
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/Flutter.framework
+android/.gradle/
+android/app/build/
+android/local.properties
+
+# Environment files
+*.env
+
+# macOS
+macos/Flutter/ephemeral/
+macos/build/
+
+# Web
+web/generated_plugin_registrant.dart
+
+# Generated files
+*.lock
