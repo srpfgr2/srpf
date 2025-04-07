@@ -31,6 +31,31 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'HRMS Portal',
       theme: ThemeData(
+        brightness: Brightness.light,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
+        useMaterial3: true,
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.teal,
+          brightness: Brightness.dark,
+        ),
+        useMaterial3: true,
+      ),
+      themeMode:
+          ThemeMode.system, // Automatically switches between light and dark
+      debugShowCheckedModeBanner: false,
+      home: const AuthGate(),
+    );
+  }
+}
+/*
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'HRMS Portal',
+      theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
         useMaterial3: true,
       ),
@@ -38,7 +63,7 @@ class MyApp extends StatelessWidget {
       home: const AuthGate(),
     );
   }
-}
+*/
 
 class AuthGate extends StatelessWidget {
   const AuthGate({super.key});

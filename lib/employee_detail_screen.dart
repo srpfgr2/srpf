@@ -75,19 +75,19 @@ class EmployeeDetailScreen extends StatelessWidget {
                 children: [
                   ListTile(
                     title: const Text("HRPN"),
-                    subtitle: Text(employee['hrpn'] ?? ''),
+                    subtitle: Text(employee['hrpn']?.toString() ?? ''),
                   ),
                   ListTile(
                     title: const Text("DOB"),
-                    subtitle: Text(employee['dob'] ?? ''),
+                    subtitle: Text(employee['dob']?.toString() ?? ''),
                   ),
                   ListTile(
                     title: const Text("Branch"),
-                    subtitle: Text(employee['branch'] ?? ''),
+                    subtitle: Text(employee['branch']?.toString() ?? ''),
                   ),
                   ListTile(
                     title: const Text("Blood Group"),
-                    subtitle: Text(employee['blood_group'] ?? ''),
+                    subtitle: Text(employee['blood_group']?.toString() ?? ''),
                   ),
                   ListTile(
                     title: const Text("Height"),

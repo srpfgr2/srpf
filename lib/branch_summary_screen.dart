@@ -290,13 +290,25 @@ class _BranchSummaryScreenState extends State<BranchSummaryScreen> {
     });
   }
 
+  // @override
+  // Widget build(BuildContext context) {
+  //   final screenWidth = MediaQuery.of(context).size.width;
+  //   final crossAxisCount = (screenWidth ~/ 160).clamp(2, 6);
+
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     final screenWidth = MediaQuery.of(context).size.width;
     final crossAxisCount = (screenWidth ~/ 160).clamp(2, 6);
-
     return Scaffold(
-      appBar: AppBar(title: const Text("Branch Summary")),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      appBar: AppBar(
+        title: Text(
+          'Branch Summary',
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
+        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: GridView.count(
@@ -332,14 +344,20 @@ class _BranchSummaryScreenState extends State<BranchSummaryScreen> {
                       decoration: BoxDecoration(
                         color:
                             hovered
-                                ? Colors.indigo.shade100
-                                : Colors.indigo.shade50,
+                                ? (isDark
+                                    ? Colors.indigo.shade700
+                                    : Colors.indigo.shade100)
+                                : (isDark
+                                    ? Colors.indigo.shade900
+                                    : Colors.indigo.shade50),
                         shape: BoxShape.circle,
                         boxShadow: [
                           BoxShadow(
                             color:
                                 hovered
-                                    ? Colors.indigo.withOpacity(0.3)
+                                    ? Colors.indigo.withOpacity(
+                                      isDark ? 0.5 : 0.3,
+                                    )
                                     : Colors.black12,
                             blurRadius: 12,
                             offset: const Offset(0, 6),
@@ -355,22 +373,23 @@ class _BranchSummaryScreenState extends State<BranchSummaryScreen> {
                               Icon(
                                 Icons.account_tree_rounded,
                                 size: 30,
-                                color: Colors.indigo.shade900,
+                                color:
+                                    isDark
+                                        ? Colors.white
+                                        : Colors.indigo.shade900,
                               ),
                               const SizedBox(height: 10),
                               Text(
                                 entry.key,
                                 textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 14,
-                                ),
+                                style: Theme.of(context).textTheme.bodyLarge
+                                    ?.copyWith(fontWeight: FontWeight.bold),
                               ),
                               const SizedBox(height: 4),
                               Text(
                                 '${entry.value} Employees',
                                 textAlign: TextAlign.center,
-                                style: const TextStyle(fontSize: 12),
+                                style: Theme.of(context).textTheme.bodySmall,
                               ),
                             ],
                           ),

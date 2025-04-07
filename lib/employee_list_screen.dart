@@ -93,10 +93,13 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('${widget.branch} Employees list'),
-        backgroundColor: Colors.teal,
+        backgroundColor:
+            Theme.of(context).appBarTheme.backgroundColor ?? Colors.teal,
       ),
       body:
           employees.isEmpty
@@ -128,7 +131,12 @@ class _EmployeeListScreenState extends State<EmployeeListScreen> {
                           vertical: 6,
                         ),
                         decoration: BoxDecoration(
-                          color: isHovered ? Colors.teal[50] : Colors.white,
+                          color:
+                              isHovered
+                                  ? (isDark
+                                      ? Colors.teal.shade900
+                                      : Colors.teal.shade50)
+                                  : Theme.of(context).cardColor,
                           borderRadius: BorderRadius.circular(10),
                           boxShadow:
                               isHovered
